@@ -1,0 +1,14 @@
+For this assessment, you must create a public GitHub repository and work
+within it, or start with a local Git repository and then transfer it to a public
+GitHub repository that you create. Use your Keele email address for your
+GitHub account and for your commits. Most of the assessment's marks
+are for your use of Git and GitHub, rather than for your Python code.
+With (or without) the help of a generative AI, such as ChatGPT, write a
+game in Python. You might start with a prompt such as “write a simple
+game in Python”, then add additional game feature(s) and “add a GUI”. It
+is not intended that you spend long writing code for this assessment; your
+code will only be looked at briefly to check that it is for a game. However,
+you should commit regular versions of your code, and make at least some
+use of branching and merging as you work on different features.
+Submit a link to your public GitHub repository, i.e. the URL for its web
+page, to the KLE drop-box for this assessment
