@@ -57,3 +57,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     game = GuessTheNumberGame(root)
     root.mainloop()
+
+#Created by "Iqra Asif at Keele University"
