@@ -1,28 +1,59 @@
+import tkinter as tk
+from tkinter import messagebox
 import random
 
-def guess_the_number():
-    number_to_guess = random.randint(1, 100)
-    attempts = 0
+class GuessTheNumberGame:
+    def __init__(self, master):
+        self.master = master
+        master.title("Guess the Number Game")
 
-    print("Welcome to Guess the Number!")
-    print("I'm thinking of a number between 1 and 100.")
+        self.number_to_guess = random.randint(1, 100)
+        self.attempts = 0
 
-    while True:
+        self.label = tk.Label(master, text="I'm thinking of a number between 1 and 100.")
+        self.label.pack(pady=10)
+
+        self.entry = tk.Entry(master)
+        self.entry.pack()
+
+        self.guess_button = tk.Button(master, text="Guess", command=self.check_guess)
+        self.guess_button.pack(pady=5)
+
+        self.result_label = tk.Label(master, text="")
+        self.result_label.pack()
+
+        self.quit_button = tk.Button(master, text="Quit", command=master.quit)
+        self.quit_button.pack(pady=5)
+
+    def check_guess(self):
         try:
-            guess = int(input("Take a guess: "))
-            attempts += 1
+            guess = int(self.entry.get())
+            self.attempts += 1
 
-            if guess < number_to_guess:
-                print("Too low!")
-            elif guess > number_to_guess:
-                print("Too high!")
+            if guess < self.number_to_guess:
+                self.result_label.config(text="Too low!")
+            elif guess > self.number_to_guess:
+                self.result_label.config(text="Too high!")
             else:
-                print(f"Congratulations! You guessed it in {attempts} tries.")
-                break
+                messagebox.showinfo("Congratulations!", f"You guessed the number in {self.attempts} tries!")
+                self.ask_play_again()
         except ValueError:
-            print("Please enter a valid number.")
+            self.result_label.config(text="Please enter a valid number.")
+
+    def ask_play_again(self):
+        play_again = messagebox.askyesno("Play Again?", "Would you like to play again?")
+        if play_again:
+            self.reset_game()
+        else:
+            self.master.quit()
+
+    def reset_game(self):
+        self.number_to_guess = random.randint(1, 100)
+        self.attempts = 0
+        self.entry.delete(0, tk.END)
+        self.result_label.config(text="")
 
 if __name__ == "__main__":
-    guess_the_number()
-
-#Created by "Iqra Asif at Keele University"
+    root = tk.Tk()
+    game = GuessTheNumberGame(root)
+    root.mainloop()
