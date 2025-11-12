@@ -58,4 +58,4 @@ if __name__ == "__main__":
     game = GuessTheNumberGame(root)
     root.mainloop()
 
-#Created by "Iqra Asif at Keele University"
+#Created by "25032215 at Keele University"
